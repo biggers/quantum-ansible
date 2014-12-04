@@ -13,8 +13,8 @@ admin_token = {{ admin_token }}
 
 # The base endpoint URLs for keystone that are advertised to clients
 # (NOTE: this does NOT affect how keystone listens for connections)
-# public_endpoint = http://localhost:%(public_port)s/
-# admin_endpoint = http://localhost:%(admin_port)s/
+public_endpoint = http://{{ controller_ip }}:%(public_port)s/
+admin_endpoint = http://{{ controller_ip }}:%(admin_port)s/
 
 # The port number which the OpenStack Compute service listens on
 # compute_port = 8774
