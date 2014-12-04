@@ -5,6 +5,17 @@
   gather_facts: True
   tasks:
 
+  - name: add devel packages to controller(s)
+    apt: pkg={{ item }} update_cache=yes
+    with_items:
+      - aptitude
+      - python-dev
+      - python-virtualenv
+      - emacs23-nox
+      - screen
+#      - python-novaclient
+#      - python-neutronclient
+
   - name: ensure nova database is present
     mysql_db: name=nova
     
@@ -28,7 +39,6 @@
       - nova-consoleauth
       - nova-scheduler
       - nova-conductor
-
 
   - name: ensure api-paste.ini is present
     copy: src=files/etc/nova/api-paste.ini dest=/etc/nova/api-paste.ini owner=nova group=nova mode=0660 backup=yes
